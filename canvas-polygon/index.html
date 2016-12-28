@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>canvas绘制简单图形和多边形</title>
+    <style>
+        .content {
+            margin: 15px auto;
+            width: 800px;
+        }
+        canvas {
+            background: #fafafa;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 style="text-align:center;">canvas绘制简单图形和多边形</h1>
+    <div class="content">
+        <h4>绘制圆形：</h4>
+        <canvas id="canvas1" width="800" height="300"></canvas>
+    </div>
+    <div class="content">
+        <h4>绘制三角形：</h4>
+        <canvas id="canvas2" width="800" height="300"></canvas>
+    </div>
+    <div class="content">
+        <h4>绘制矩形：</h4>
+        <canvas id="canvas3" width="800" height="300"></canvas>
+    </div>
+    <div class="content">
+        <h4>绘制多边形：</h4>
+        <canvas id="canvas4" width="800" height="300"></canvas>
+    </div>
+
+
+    <script type="text/javascript">
+
+        var can1 = document.getElementById('canvas1');
+        var ctx1 = can1.getContext('2d');
+        var draw1 = function(x, y, r, start, end, color, type) {
+            var unit = Math.PI / 180;
+            ctx1.beginPath();
+            ctx1.arc(x, y, r, start * unit, end * unit);
+            ctx1[type + 'Style'] = color;
+            ctx1.closePath();
+            ctx1[type]();
+        };
+        draw1(200, 150, 50, 0, 360, 'red', 'fill');
+        draw1(600, 150, 100, 0, 360, 'green', 'stroke');
+
+        var can2 = document.getElementById('canvas2');
+        var ctx2 = can2.getContext('2d');
+        var draw2 = function(x1, y1, x2, y2, x3, y3, color, type) {
+            ctx2.beginPath();
+            ctx2.moveTo(x1, y1);
+            ctx2.lineTo(x2, y2);
+            ctx2.lineTo(x3, y3);
+          	ctx2[type + 'Style'] = color;
+          	ctx2.closePath();
+            ctx2[type]();
+        };
+        draw2(100, 50, 150, 150, 125, 200, 'red', 'fill');
+        draw2(500, 50, 450, 130, 625, 250, 'green', 'stroke');
+
+        var can3 = document.getElementById('canvas3');
+        var ctx3 = can3.getContext('2d');
+        var draw3 = function(x, y, width, height, radius, color, type){
+            ctx3.beginPath();
+            ctx3.moveTo(x, y+radius);
+            ctx3.lineTo(x, y+height-radius);
+            ctx3.quadraticCurveTo(x, y+height, x+radius, y+height);
+            ctx3.lineTo(x+width-radius, y+height);
+            ctx3.quadraticCurveTo(x+width, y+height, x+width, y+height-radius);
+            ctx3.lineTo(x+width, y+radius);
+            ctx3.quadraticCurveTo(x+width, y, x+width-radius, y);
+            ctx3.lineTo(x+radius, y);
+            ctx3.quadraticCurveTo(x, y, x, y+radius);
+          	ctx3[type + 'Style'] = color || params.color;
+        	ctx3.closePath();
+        	ctx3[type]();
+        }
+        draw3(100, 100, 150, 100, 0, 'red', 'fill');
+        draw3(500, 100, 200, 160, 20, 'green', 'fill');
+
+        var can4 = document.getElementById('canvas4');
+        var ctx4 = can4.getContext('2d');
+        var drawPolygon = function(ctx, conf){
+            var x = conf && conf.x || 0;  //中心点x坐标
+            var y = conf && conf.y || 0;  //中心点y坐标
+            var num = conf && conf.num || 3;   //图形边的个数
+            var r = conf && conf.r || 100;   //图形的半径
+            var width = conf && conf.width || 5;
+            var strokeStyle = conf && conf.strokeStyle;
+            var fillStyle = conf && conf.fillStyle;
+            //开始路径
+            ctx.beginPath();
+            var startX = x + r * Math.cos(2*Math.PI*0/num);
+            var startY = y + r * Math.sin(2*Math.PI*0/num);
+            ctx.moveTo(startX, startY);
+            for(var i = 1; i <= num; i++) {
+                var newX = x + r * Math.cos(2*Math.PI*i/num);
+                var newY = y + r * Math.sin(2*Math.PI*i/num);
+                ctx.lineTo(newX, newY);
+            }
+            ctx.closePath();
+            //路径闭合
+            if(strokeStyle) {
+                ctx.strokeStyle = strokeStyle;
+                ctx.lineWidth = width;
+                ctx.lineJoin = 'round';
+                ctx.stroke();
+            }
+            if(fillStyle) {
+                ctx.fillStyle = fillStyle;
+                ctx.fill();
+            }
+        };
+        drawPolygon(ctx4, {
+            x: 150,
+            y: 150,
+        	num: 6,
+        	r: 100,
+        	strokeStyle: 'blue',
+        	fillStyle: '#9da'
+        });
+        drawPolygon(ctx4, {
+            x: 400,
+            y: 150,
+        	num: 4,
+        	r: 50,
+        	strokeStyle: 'red',
+        	width: 4
+        });
+        drawPolygon(ctx4, {
+        	x: 600,
+        	y: 150,
+        	num: 100,
+        	fillStyle: '#000'
+        })
+
+    </script>
+</body>
+</html>

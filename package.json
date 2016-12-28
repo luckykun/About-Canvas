@@ -1,0 +1,33 @@
+{
+  "name": "about-canvas",
+  "version": "1.0.0",
+  "description": "关于canvas的一些实例",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luckykun/About-Canvas.git"
+  },
+  "keywords": [
+    "js",
+    "canvas"
+  ],
+  "author": "luckykun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luckykun/About-Canvas/issues"
+  },
+  "homepage": "https://github.com/luckykun/About-Canvas#readme",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-less": "^3.3.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-open": "^2.0.0"
+  }
+}
