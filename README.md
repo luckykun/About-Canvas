@@ -8,6 +8,10 @@
 
 - 正在更新中...
 
+## 仓库内容
+
+### [canvas-polygon](https://github.com/luckykun/About-Canvas/tree/master/canvas-polygon)
+
 
 ## 运行方法
 
@@ -21,6 +25,3 @@
 
 
 
-## 仓库内容
-
-### [cancaspolygon](https://github.com/luckykun/About-Canvas/tree/master/canvas-polygon)
