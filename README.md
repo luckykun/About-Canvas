@@ -1,13 +1,13 @@
 # 关于canvas的一些学习资料和demo
 
-
-## 仓库内容
+## 简介
 
 - 封装好的基本绘图方法，比如三角形、（圆角）矩形、多边形。
 
 - 更多酷炫的canvas实例demo。
 
 - 正在更新中...
+
 
 ## 运行方法
 
@@ -18,3 +18,9 @@
 - gulp 运行本地环境
 
 就能在浏览器`http://localhost:8899/`访问到所有的demo实例。
+
+
+
+## 仓库内容
+
+### [cancaspolygon](https://github.com/luckykun/About-Canvas/tree/master/canvas-polygon)
